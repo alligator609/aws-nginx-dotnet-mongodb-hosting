@@ -48,6 +48,47 @@ systemctl status nginx // server status
    `nano /var/www/your_domain/html/index.html`
 
 
+Save and close the file by pressing Ctrl+X to exit,
+
+In order for Nginx to serve this content, it’s necessary to create a server block with the correct directives. Instead of modifying the default configuration file directly, let’s make a new one at /etc/nginx/sites-available/your_domain:
+
+`sudo nano /etc/nginx/sites-available/your_domain`
+Paste in the following configuration block, which is similar to the default, but updated for our new directory and domain name:
+ /etc/nginx/sites-available/your_domain
+
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/your_domain/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name your_domain www.your_domain;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+
+Notice that we’ve updated the root configuration to our new directory, and the server_name to our domain name.
+
+Next, let’s enable the file by creating a link from it to the sites-enabled directory, which Nginx reads from during startup:
+
+`sudo ln -s /etc/nginx/sites-available/your_domain /etc/nginx/sites-enabled/`
+
+
+To avoid a possible hash bucket memory problem 
+
+`sudo nano /etc/nginx/nginx.conf`
+Find the server_names_hash_bucket_size directive and remove the # symbol.
+
+test to make sure that there are no syntax errors in any of your Nginx files
+
+`sudo nginx -t`
+If there aren’t any problems, restart Nginx to enable your changes:
+
+
+`sudo systemctl restart nginx`
 
 reference:
-https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04"# aws-nginx-hosting" 
+https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04 
