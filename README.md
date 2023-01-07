@@ -2,9 +2,12 @@
 sudo apt update
 sudo apt install nginx
 # Step 2 – Adjusting the Firewall
-1. sudo ufw allow 'Nginx HTTP' // for http on port 
-1. sudo ufw enable // enable 
-3. sudo ufw status // check status
+1. sudo ufw app list
+2. sudo ufw allow OpenSSH
+3. sudo ufw allow 'Nginx Full'
+4. sudo ufw allow 'Nginx HTTP' // for http on port 
+5. sudo ufw enable // enable 
+6. sudo ufw status // check status
 
 # Step 3 – Checking your Web Server
 systemctl status nginx // server status 
@@ -34,16 +37,13 @@ systemctl status nginx // server status
 1. Create the directory for your_domain as follows, using the -p flag to create any necessary parent directories:
  `sudo mkdir -p /var/www/your_domain/html`
 
-2. Create the directory for your_domain as follows, using the -p flag to create any necessary parent directories:
-
-   `sudo mkdir -p /var/www/your_domain/html`
-3. Next, assign ownership of the directory with the $USER environment variable:
+2. Next, assign ownership of the directory with the $USER environment variable:
 
    `sudo chown -R $USER:$USER /var/www/your_domain/html`
-4. The permissions of your web roots should be correct if you haven’t modified your umask value, which sets default file permissions. To ensure that your permissions are correct and allow the owner to read, write, and execute the files while granting only read and execute permissions to groups and others, you can input the following command:
+3. The permissions of your web roots should be correct if you haven’t modified your umask value, which sets default file permissions. To ensure that your permissions are correct and allow the owner to read, write, and execute the files while granting only read and execute permissions to groups and others, you can input the following command:
 
    `sudo chmod -R 755 /var/www/your_domain`
-5. Next, create a sample index.html page using nano or your favorite editor:
+4. Next, create a sample index.html page using nano or your favorite editor:
 
    `nano /var/www/your_domain/html/index.html`
 
@@ -56,6 +56,7 @@ In order for Nginx to serve this content, it’s necessary to create a server bl
 Paste in the following configuration block, which is similar to the default, but updated for our new directory and domain name:
  /etc/nginx/sites-available/your_domain
 
+ ~~~
 server {
         listen 80;
         listen [::]:80;
@@ -68,7 +69,8 @@ server {
         location / {
                 try_files $uri $uri/ =404;
         }
-}
+} 
+~~~
 
 Notice that we’ve updated the root configuration to our new directory, and the server_name to our domain name.
 
