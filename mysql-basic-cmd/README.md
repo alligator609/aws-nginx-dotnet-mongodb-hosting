@@ -12,14 +12,14 @@ mysql>
 # create new user to access database
 sudo mysql -u root # I had to use "sudo" since it was a new installation
 
-mysql> USE mysql;
-mysql> CREATE USER 'newuser'@'localhost' IDENTIFIED BY '12345678';
-mysql> GRANT ALL PRIVILEGES ON *.* TO 'YOUR_SYSTEM_USER'@'localhost';
-mysql> UPDATE user SET plugin='auth_socket' WHERE User='YOUR_SYSTEM_USER'; 
-mysql> FLUSH PRIVILEGES;
-mysql> exit;
+``` mysql> USE mysql; ```
+``` mysql> CREATE USER 'newuser'@'localhost' IDENTIFIED BY '12345678'; ```
+``` mysql> GRANT ALL PRIVILEGES ON *.* TO 'YOUR_SYSTEM_USER'@'localhost'; ```
+``` mysql> UPDATE user SET plugin='auth_socket' WHERE User='YOUR_SYSTEM_USER'; ``` 
+``` mysql> FLUSH PRIVILEGES; ```
+``` mysql> exit; ```
 
-sudo service mysql restart
+``` sudo service mysql restart ```
 # Import A MySQL Database
 The file must be in .sql format. It can not be compressed in a .zip or .tar.gz file.
 

@@ -30,42 +30,64 @@ max_input_time = 1000
 ``` sudo service php8.1-fpm restart ```
 
 #  configure nginx for your website, and to run php use below conf file 
-server {
-        listen 80;
-        listen 443;
-        ssl on;
-        ssl_certificate /etc/ssl/ssl-bundle.crt;
-        ssl_certificate_key /etc/ssl/star.cogent.space.key;
+~~~ server {
 
-        server_name techbucket.xyz;
-        root /var/www/techbucket.xyz/html;
+    listen 80; listen 443; 
+    server_name todo.techbucket.xyz;
+    root /var/www/todo.techbucket.xyz/public;
 
-        add_header X-Frame-Options "SAMEORIGIN";
-        add_header X-XSS-Protection "1; mode=block";
-        add_header X-Content-Type-Options "nosniff";
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-XSS-Protection "1; mode=block";
+    add_header X-Content-Type-Options "nosniff";
 
-        index index.php index.html index.htm index.nginx-debian.html;
+    index index.php index.html index.htm index.nginx-debian.html;
 
-        charset utf-8;
+    charset utf-8;
 
-        location / {
-                try_files $uri $uri/ /index.php?$query_string;
-        }
+    location / {
+            try_files $uri $uri/ /index.php?$query_string;
+    }
 
-        location = /favicon.ico { access_log off; log_not_found off; }
-        location = /robots.txt  { access_log off; log_not_found off; }
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
 
-        error_page 404 /index.php;
+    error_page 404 /index.php;
 
-        location ~ \.php$ {
-                include snippets/fastcgi-php.conf;
-                fastcgi_pass unix:/var/run/php/php-fpm.sock;
-        }
+    location ~ \.php$ {
+            include snippets/fastcgi-php.conf;
+            fastcgi_pass unix:/var/run/php/php-fpm.sock;
+    }
 
-        location ~ /\.ht {
-                deny all;
-        }
+    location ~ /\.ht {
+            deny all;
+    }
 }
+~~~
 
+# change storage permission
+``` chown -R www-data:www-data storage ```
+
+# be sure to check composer install guiline , so u can use laravel  and composer command
+# Autoloader Optimization
+
+~~~
+ composer install --optimize-autoloader --no-dev 
+~~~
+
+# Optimizing Configuration Loading
+~~~
+php artisan config:cache
+~~~
+
+# Optimizing Route Loading
+~~~
+php artisan route:cache
+~~~
+
+# Optimizing View Loading
+
+~~~
+php artisan view:cache
+~~~
 reference:
-https://www.tutsmake.com/how-to-install-lemp-stack-nginx-mysql-php-on-ubuntu-22-04/
+https://www.tutsmake.com/how-to-install-lemp-stack-nginx-mysql-php-on-ubuntu-22-04/ 
