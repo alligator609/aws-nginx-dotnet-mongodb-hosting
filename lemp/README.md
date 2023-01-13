@@ -1,15 +1,27 @@
 ``` sudo apt upgrade ```
+
 ``` sudo apt update ```
+
 ``` sudo apt install nginx ```
+
 ``` sudo ufw app list ```
+
 ``` sudo ufw allow OpenSSH ```
+
 ``` sudo ufw allow 'Nginx Full' ```
+
 ``` sudo ufw enable ```
+
 ``` sudo ufw status ```
+
 ``` sudo systemctl status nginx ```
+
 ``` sudo apt install mysql-server ```
+
 ``` sudo service mysql status ```
+
 ``` sudo mysql -V ```
+
 ``` sudo mysql_secure_installation ```
 
 ~~~ 
