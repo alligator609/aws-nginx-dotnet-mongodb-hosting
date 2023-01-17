@@ -44,11 +44,12 @@ max_input_time = 1000
 ``` sudo service php8.1-fpm restart ```
 
 #  configure nginx for your website, and to run php use below conf file 
-~~~ server {
+~~~ 
+server {
 
     listen 80; listen 443; 
-    server_name todo.techbucket.xyz;
-    root /var/www/todo.techbucket.xyz/public;
+    server_name todo.test.xyz;
+    root /var/www/todo.test.xyz/public;
 
     add_header X-Frame-Options "SAMEORIGIN";
     add_header X-XSS-Protection "1; mode=block";
