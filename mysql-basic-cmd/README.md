@@ -12,12 +12,12 @@ mysql>
 # create new user to access database
 sudo mysql -u root # I had to use "sudo" since it was a new installation
 
-``` mysql> USE mysql; ```
-``` mysql> CREATE USER 'newuser'@'localhost' IDENTIFIED BY '12345678'; ```
-``` mysql> GRANT ALL PRIVILEGES ON *.* TO 'YOUR_SYSTEM_USER'@'localhost'; ```
-``` mysql> UPDATE user SET plugin='auth_socket' WHERE User='YOUR_SYSTEM_USER'; ``` 
-``` mysql> FLUSH PRIVILEGES; ```
-``` mysql> exit; ```
+``` mysql> USE mysql; ``` <br>
+``` mysql> CREATE USER 'newuser'@'localhost' IDENTIFIED BY '12345678'; ``` <br>
+``` mysql> GRANT ALL PRIVILEGES ON *.* TO 'YOUR_SYSTEM_USER'@'localhost'; ``` <br>
+``` mysql> UPDATE user SET plugin='auth_socket' WHERE User='YOUR_SYSTEM_USER'; ```  <br>
+``` mysql> FLUSH PRIVILEGES; ``` <br>
+``` mysql> exit; ``` <br>
 
 ``` sudo service mysql restart ```
 # Import A MySQL Database
@@ -30,5 +30,7 @@ Next, run this command:
 
 ``` mysql -p -u root database_name < sms.sql ```
 
+# select database
+ ``` use db_name;  ```
 # show all table 
 ``` SHOW TABLES ```

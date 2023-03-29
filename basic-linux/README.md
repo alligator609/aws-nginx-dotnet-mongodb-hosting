@@ -14,3 +14,6 @@ Means
 7 - Owner can write
 7 - Group can write
 5 - Others cannot write!
+
+# remove directory 
+``` sudo rm  test -r ```
