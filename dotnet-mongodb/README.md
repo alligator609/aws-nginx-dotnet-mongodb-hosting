@@ -87,8 +87,8 @@ WantedBy=multi-user.target
 ``` sudo systemctl start kestrel-app.service ```
 ##  check status 
 ``` sudo systemctl status kestrel-app.service ``` 
-## 
+## Install mogodb 
+check mogodb in linux 
 
-``` nano /etc/systemd/system/kestrel-app.service ```
 
 <a href="https://code-maze.com/deploy-aspnetcore-linux-nginx/"> Ref </a>
