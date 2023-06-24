@@ -83,8 +83,16 @@ Environment=ASPNETCORE_ENVIRONMENT=Production
 WantedBy=multi-user.target
 
 ```
+
 ```sudo systemctl enable kestrel-app.service ```
 ``` sudo systemctl start kestrel-app.service ```
+``` sudo systemctl stop kestrel-app.service ```
+## if u change file name then ReStart deamon
+``` sudo systemctl daemon-reload ```
+## to check for error logs 
+sudo journalctl -fu kestrel-app.service
+## to give permission for exact folder 
+chmod -R 777 logs
 ##  check status 
 ``` sudo systemctl status kestrel-app.service ``` 
 ## Install mogodb 
