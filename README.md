@@ -100,8 +100,4 @@ Now, verify the Nginx server using the curl command.
 To verify from outside make sure in security rules u add Inbound http and https 
 
  
-reference:
-https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04 
-
-
-# To see from public 
+[reference](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04) 
