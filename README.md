@@ -1,6 +1,10 @@
 # Step 1 Install Nginx
+```
 sudo apt update
+```
+```
 sudo apt install nginx
+```
 # Step 2 – Adjusting the Firewall
 1. sudo ufw app list
 2. sudo ufw allow OpenSSH
