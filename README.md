@@ -68,7 +68,7 @@ server {
         root /var/www/your_domain/html;
         index index.html index.htm index.nginx-debian.html;
 
-        server_name your_domain www.your_domain;
+        server_name your_domain www.your_domain test.example.com  *.test.example.com;
 
         location / {
                 try_files $uri $uri/ =404;
