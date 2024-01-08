@@ -92,3 +92,7 @@ sudo mongorestore --db newdb --drop /var/backups/mongobackups/10-29-20/newdb/
 
 ```
 
+## drop collection 
+```
+db.myCollection.drop();
+```
