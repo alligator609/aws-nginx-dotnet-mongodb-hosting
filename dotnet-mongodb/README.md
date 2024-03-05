@@ -70,7 +70,9 @@ server {
 4. The unit file contains information regarding the unit, which is a service in this case. For services, it should have the .service extension and contain some information about the service. These files are required to be in the /etc/systemd/system directory
 5. Let’s use “nano” to create the unit file and name it kestrel-app.service:
 
-``` sudo nano /etc/systemd/system/kestrel-app.service ```
+``` 
+sudo nano /etc/systemd/system/kestrel-app.service
+
 ``` 
 [Unit]
 Description=ASP.NET Core Web App running on Ubuntu
@@ -90,11 +92,19 @@ Environment=ASPNETCORE_ENVIRONMENT=Production
 [Install]
 WantedBy=multi-user.target
 
+## kestrel short key
 ```
-
-```sudo systemctl enable kestrel-app.service ```
-``` sudo systemctl start kestrel-app.service ```
-``` sudo systemctl stop kestrel-app.service ```
+sudo systemctl enable kestrel-app.service 
+```
+``` 
+sudo systemctl start kestrel-app.service 
+```
+``` 
+sudo systemctl stop kestrel-app.service
+```
+``` 
+sudo systemctl restart kestrel-app.service
+```
 ## if u change file name then ReStart deamon
 ``` sudo systemctl daemon-reload ```
 ## to check for error logs 
